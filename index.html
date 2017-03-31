@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<form id="login" style="display: inline-block; vertical-align: top;">
+    <h1>LOGIN</h1>
+    <p>Email:</p>
+    <input name="email" type="text">
+    <p>Password:</p>
+    <input name="password" type="password"><br><br>
+    <button>send</button>
+</form>
+<form id="register" style="display: inline-block; margin-left: 50px;">
+    <h1>REGISTER</h1>
+    <p>Username:</p>
+    <input name="userName" type="text">
+    <p>Email:</p>
+    <input name="email" type="text">
+    <p>Password:</p>
+    <input name="password" type="password"><br><br>
+    <button>send</button>
+</form>
+<script>
+    $('#login').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            method: 'POST',
+            url: 'http://localhost:3000/login',
+            data: $(this).serialize(),
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    });
+
+    $('#register').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            method: 'POST',
+            url: 'http://localhost:3000/register',
+            data: $(this).serialize(),
+            success: function (data) {
+                console.log(data);
+            }
+        })
+    });
+</script>
+</body>
+</html>
